@@ -1,0 +1,13 @@
+{
+  "pages": [
+    "pages/classic/classic"
+  ],
+  "window":{
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "喵酱物语",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "default",
+    "backgroundColor": "#FFFFFF",
+    "enablePullDownRefresh": false
+  }
+}

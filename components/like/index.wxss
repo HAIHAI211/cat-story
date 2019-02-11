@@ -1,0 +1,14 @@
+/* components/like/index.wxss */
+/* >子代选择器也可以用 :first-child也可以用 */
+.container{
+}
+.container image{
+  width: 32rpx;
+  height: 28rpx;
+}
+.container text{
+  /* 苹方 思源  */
+  /* PingFangSC只在ios下起作用 */
+  font-size: 48rpx;
+  color: #bbbbbb;
+}
