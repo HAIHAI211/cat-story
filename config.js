@@ -1,6 +1,7 @@
 const config = {
   api_base_url: 'http://localhost:8085/sell/catstory/',
-  appkey: 'KOLDaSADSDLWWbF'
+  // api_base_url: 'http://bl.7yue.pro/v1/',
+  appkey: 'HARRISONLOVELANNY1'
 }
 
 export {config}
