@@ -12,7 +12,16 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    // 最先被触发 因此请求在这里
+    wx.request({
+      url: 'http://localhost:8085/sell/catstory/classic/latest',
+      header: {
+        appkey: 'KOLDaSADSDLWWbF'
+      },
+      success:(res) => { // 400等错误码也会走这儿
+        console.log(res)
+      },
+    })
   },
 
   /**
