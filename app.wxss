@@ -1,3 +1,6 @@
+/* 只有少数外部样式可以被组件继承：font、color */
+/* 绝大多数外部样式可以被page继承 */
 page{
    font-family: "PingFangSC-Thin";
+   font-size: 32rpx;
 }
