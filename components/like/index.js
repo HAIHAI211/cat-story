@@ -36,6 +36,14 @@ Component({
         count,
         like
       })
+      // 激活 自定义事件 ,第二个参数本质是event的detail属性
+      // 第三个参数EventOption:Bubbles(是否冒泡),
+      // composed(是否穿越组件边界),capturePhase(是否有捕获阶段)
+      // 类似vue的$emit
+      let behavior = this.properties.like? 'like' : 'cancel'
+      this.triggerEvent('like', {
+        behavior 
+      }, {})
     } 
   }
 })

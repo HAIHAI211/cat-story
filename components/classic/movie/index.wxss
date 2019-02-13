@@ -10,7 +10,7 @@
 }
 
 .tag{
-  width: 42rpx;
+  width: 46rpx;
   height: 142rpx;
   position: relative;
   left: -310rpx;
