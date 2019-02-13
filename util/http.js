@@ -19,19 +19,17 @@ class HTTP{
       success: (res) => {
         let code = res.statusCode.toString()
         if (code.startsWith('2')){
-          params.success(res.data)
+          params.success(res.data.data)
         } else { // 404 401 500等错误
-          this._show_error(res.data)
+          this._show_error(res.data.code, res.data.msg)
         }
       },
       fail: (err) => { // 没有网络等导致api调用失败
-        this._show_error(1)
+        this._show_error()
       }
     })
   }
-  _show_error(res){
-    let error_code = res.code
-    let error_msg = res.msg
+  _show_error(error_code, error_msg){
     wx.showToast({
       title: tips[error_code] || error_msg || tips[1],
       icon: 'none',

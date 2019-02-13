@@ -1,1 +1,2 @@
-<h-like/>
+<h-like like="{{classicData.like_status}}" count="{{classicData.fav_nums}}"/>
+<h-movie img="{{classicData.image}}" content="{{classicData.content}}"/> 

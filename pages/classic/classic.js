@@ -1,33 +1,36 @@
-import {HTTP} from '../../util/http.js'
-let http = new HTTP()
+// import {ClassicModel} from '../../models/classic.js'
+// let classicModel = new ClassicModel()
+const app = getApp(); 
+const db = app.globalData.db
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    classicData: null
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    http.request({
-      url: 'classic/latest',
+    // 最先被触发 因此请求在这里
+    db.collection('classic').doc('XGPOgFsqTi00tnQn').get({
       success: (res) => {
-        console.log(res)
+        console.log(res.data)
+        this.setData({
+          classicData: res.data
+        })
       }
     })
-    // 最先被触发 因此请求在这里
-    // wx.request({
-    //   url: 'http://localhost:8085/sell/catstory/classic/latest',
-    //   header: {
-    //     appkey: 'KOLDaSADSDLWWbF'
-    //   },
-    //   success:(res) => { // 400等错误码也会走这儿
-    //     console.log(res)
-    //   },
+
+
+    // classicModel.getLatest((res)=>{
+    //   console.log(res)
+    //   this.setData({
+    //     classicData: res
+    //   })
     // })
   },
 
