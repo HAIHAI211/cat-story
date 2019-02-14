@@ -19,7 +19,7 @@ class HTTP{
       success: (res) => {
         let code = res.statusCode.toString()
         if (code.startsWith('2')){
-          params.success(res.data.data)
+          params.success && params.success(res.data.data)
         } else { // 404 401 500等错误
           this._show_error(res.data.code, res.data.msg)
         }

@@ -1,5 +1,7 @@
 // import {ClassicModel} from '../../models/classic.js'
+import {LikeModel} from '../../models/like.js'
 // let classicModel = new ClassicModel()
+let likeModel = new LikeModel()
 const app = getApp(); 
 const db = app.globalData.db
 Page({
@@ -13,6 +15,10 @@ Page({
 
   onLike: function (event) {
     console.log(event)
+    let behavior = event.detail.behavior
+    let id = this.data.classicData._id
+    let category = this.data.classicData.type
+    likeModel.like(behavior, id, category)
   },
 
   /**
