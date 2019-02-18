@@ -5,7 +5,9 @@ Component({
    */
   properties: {
     index: {
-      type: Number
+      type: Number,
+      observer: function (newV, oldV) { //  等同于vue的watch
+      }
     }
   },
 

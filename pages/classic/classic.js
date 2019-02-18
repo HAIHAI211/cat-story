@@ -2,7 +2,7 @@
 import {LikeModel} from '../../models/like.js'
 // let classicModel = new ClassicModel()
 let likeModel = new LikeModel()
-const app = getApp(); 
+const app = getApp();
 const db = app.globalData.db
 Page({
 
@@ -10,7 +10,9 @@ Page({
    * 页面的初始数据
    */
   data: {
-    classicData: null
+    classicData: null,
+    latest: true,
+    first: false
   },
 
   onLike: function (event) {
@@ -19,6 +21,14 @@ Page({
     let id = this.data.classicData._id
     let category = this.data.classicData.type
     likeModel.like(behavior, id, category)
+  },
+
+  onNext: function (event) {
+
+  },
+
+  onPrevious: function (event) {
+
   },
 
   /**

@@ -1,3 +1,11 @@
-<h-date index="{{classicData.index}}"/>
-<h-like bind:like="onLike"  like="{{classicData.like_status}}" count="{{classicData.fav_nums}}"/>
-<h-movie img="{{classicData.image}}" content="{{classicData.content}}"/>
+<view class="container">
+    <view class="header">
+        <h-date class="date" index="{{classicData.index}}"/>
+        <h-like class="like" bind:like="onLike"  like="{{classicData.like_status}}" count="{{classicData.fav_nums}}"/>
+    </view>
+    <h-movie img="{{classicData.image}}" content="{{classicData.content}}"/>
+    <h-navi class="navi" 
+    title="{{classicData.title}}" 
+    first="{{first}}" 
+    latest="{{latest}}" bind:left="onNext" bind:right="onPrevious"/>
+</view>
