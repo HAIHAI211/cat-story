@@ -1,6 +1,6 @@
-// import {ClassicModel} from '../../models/classic.js'
+import {ClassicModel} from '../../models/classic.js'
 import {LikeModel} from '../../models/like.js'
-// let classicModel = new ClassicModel()
+let classicModel = new ClassicModel()
 let likeModel = new LikeModel()
 const app = getApp();
 const db = app.globalData.db
@@ -28,7 +28,14 @@ Page({
   },
 
   onPrevious: function (event) {
-
+    let index = this.data.classicData.index
+    classicModel.getPrevious(index, (data) => {
+      // console.log(res)
+        this.setData({
+            classicData: data,
+            latest: classicModel.isLatest(data.index)
+        })
+    })
   },
 
   /**
