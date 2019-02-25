@@ -23,20 +23,23 @@ Page({
     likeModel.like(behavior, id, category)
   },
 
-  onNext: function (event) {
-
+  onNext: function () {
+    this._updateClassic('next')
+  },
+  onPrevious: function () {
+      this._updateClassic('previous')
+  },
+  _updateClassic: function (nextOrPrevious) {
+      let index = this.data.classicData.index
+      classicModel.getClassic(index, nextOrPrevious, (data) => {
+          this.setData({
+              classicData: data,
+              latest: classicModel.isLatest(data.index),
+              first: classicModel.isFirst(data.index)
+          })
+      })
   },
 
-  onPrevious: function (event) {
-    let index = this.data.classicData.index
-    classicModel.getPrevious(index, (data) => {
-      // console.log(res)
-        this.setData({
-            classicData: data,
-            latest: classicModel.isLatest(data.index)
-        })
-    })
-  },
 
   /**
    * 生命周期函数--监听页面加载

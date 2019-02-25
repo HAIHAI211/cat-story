@@ -6,13 +6,24 @@ class ClassicModel extends HTTP{
       success: (res) => {
         sCallback(res)
         this._setLatestIndex(res.index)
+        let key = this._getKey(res.index)
+        wx.setStorageSync(key, res)
       }
     })
   }
-  getPrevious (index, sCallback) {
+  getClassic (index, nextOrPrevious, sCallback) {
+    // 缓存中寻找 or API 写入到缓存中
+    // key 确定key
+    let key = this._getKey(nextOrPrevious === 'next' ? index + 1 : index - 1)
+    let classicData = wx.getStorageSync(key)
+    if (classicData) {
+        sCallback(classicData)
+        return
+    }
     this.request({
-        url: 'classic/' + index + '/previous',
+        url: `classic/${index}/${nextOrPrevious}`,
         success: (res) => {
+          wx.setStorageSync(this._getKey(res.index), res)
           sCallback(res)
         }
     })
@@ -33,6 +44,10 @@ class ClassicModel extends HTTP{
   _getLatestIndex () {
     let index = wx.getStorageSync('latest')
     return index
+  }
+  _getKey (index) {
+    let key = `classic-${index}`
+    return key
   }
 }
 
