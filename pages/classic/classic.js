@@ -12,7 +12,9 @@ Page({
   data: {
     classicData: null,
     latest: true,
-    first: false
+    first: false,
+    likeCount: 0,
+    likeStatus: false
   },
 
   onLike: function (event) {
@@ -32,12 +34,21 @@ Page({
   _updateClassic: function (nextOrPrevious) {
       let index = this.data.classicData.index
       classicModel.getClassic(index, nextOrPrevious, (data) => {
-          this.setData({
+        this._getLikeStatus(res.id, res.type)
+        this.setData({
               classicData: data,
               latest: classicModel.isLatest(data.index),
               first: classicModel.isFirst(data.index)
           })
       })
+  },
+  _getLikeStatus: function (artID, category) {
+    likeModel.getClassicLikeStatus(artID, category, (res) => {
+      this.setData({
+        likeCount: res.fav_nums,
+        likeStatus: res.like_status
+      })
+    })
   },
 
 
@@ -48,9 +59,11 @@ Page({
     // 最先被触发 因此请求在这里
     db.collection('classic').doc('XGPOgFsqTi00tnQn').get({
       success: (res) => {
-        console.log(res.data)
+        // this._getLikeStatus(res.id, res.type)
         this.setData({
-          classicData: res.data
+          classicData: res.data,
+          likeCount: res.data.fav_nums,
+          likeStatus: res.data.like_status
         })
       }
     })
